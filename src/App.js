@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Blog from "./Components/Blog/Blog";
 import Courses from "./Components/Courses/Courses";
+import Rightside from "./Components/Courses/Rightside/Rightside";
 import FAQ from "./Components/FAQ/FAQ";
 
 import Home from "./Components/Home/Home";
@@ -27,6 +28,11 @@ function App() {
           path: '/courses',
           element: <Courses></Courses>,
           loader : ()=> fetch('https://assignment-10-server-ivory.vercel.app/courses')
+        },
+        {
+          path: '/courses',
+          element: <Rightside></Rightside>,
+          loader: ()=> fetch('https://assignment-10-server-ivory.vercel.app/courses')
         },
         {
           path: '/faq',

@@ -57,19 +57,19 @@ const Signup = () => {
             <form onSubmit={handleregister} >
                 <div className='mt-4'>
                     <h1 className='text-2xl '>Your Name</h1>
-                    <input className='border border-gray-900 shadow-2xl' type="name" name="name" id="" placeholder='Your name' required />
+                    <input className=' text-gray-900 border border-gray-900 shadow-2xl' type="name" name="name" id="" placeholder='Your name' required />
                 </div>
                 <div className='mt-4'>
                     <h1 className='text-2xl '>Your PhotoURL</h1>
-                    <input className='border border-gray-900 shadow-2xl' type="text" name="photoURL" id="" placeholder='Your PhotoURL' required />
+                    <input className=' text-gray-900 border border-gray-900 shadow-2xl' type="text" name="photoURL" id="" placeholder='Your PhotoURL' required />
                 </div>
                 <div className='mt-4'>
                     <h1 className='text-2xl '>Email</h1>
-                    <input className='border border-gray-900 shadow-2xl' type="email" name="email" id="" placeholder='Your Email' required />
+                    <input className=' text-gray-900 border border-gray-900 shadow-2xl' type="email" name="email" id="" placeholder='Your Email' required />
                 </div>
                 <div className='mt-4'>
                     <h1 className='text-2xl '>Password</h1>
-                    <input className='border border-gray-900 shadow-2xl' type="password" name="password" id="" placeholder='Your password' required />
+                    <input className=' text-gray-900 border border-gray-900 shadow-2xl' type="password" name="password" id="" placeholder='Your password' required />
                 </div>
                 <button className='bg bg-amber-700 rounded-xl my-4 py-1 px-2 font-semibold ' type="submit">Register </button>
                 <br />

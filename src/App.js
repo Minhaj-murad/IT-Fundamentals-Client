@@ -25,7 +25,8 @@ function App() {
         },
         {
           path: '/courses',
-          element: <Courses></Courses>
+          element: <Courses></Courses>,
+          loader : ()=> fetch('https://assignment-10-server-ivory.vercel.app/courses')
         },
         {
           path: '/faq',

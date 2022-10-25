@@ -29,11 +29,11 @@ const Login = () => {
                
                 <div className='mt-4'>
                  <label className='text-2xl' htmlFor="email">Email</label> <br />
-                <input className='bg-gray-300 border border-gray-900 shadow-2xl' type="email" name="email" id="" placeholder='Your Email' required/>
+                <input className=' text-gray-900 border border-gray-900 shadow-2xl' type="email" name="email" id="" placeholder='Your Email' required/>
                 </div>
                 <div className='mt-4'>
                 <label className='text-2xl' htmlFor="password">Password</label> <br />
-                <input className='border border-gray-900 shadow-2xl' type="password" name="password" id="" placeholder='Your password' required/>
+                <input className=' text-gray-900 border border-gray-900 shadow-2xl' type="password" name="password" id="" placeholder='Your password' required/>
                 </div>
                 <button className='bg bg-amber-700 rounded-xl my-4 py-1 px-2 font-semibold ' type="submit">Log in </button>
                 <br />

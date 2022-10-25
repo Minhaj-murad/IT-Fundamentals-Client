@@ -1,10 +1,38 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../UseContext/Usecontext';
 
 const Signup = () => {
+   const {createUser}=useContext(AuthContext);
+    const handleregister=(e)=>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const name = form.name.value;
+        const photoURL=form.photoURL.value;
+        console.log(email,password,name,photoURL);
+
+
+        createUser( email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+           
+            
+        })
+        .catch(error => console.error(error));
+
+    }
+     
+
+
+
     return (
         <div >
-        <form className='w-96 mx-auto h-auto  shadow-2xl text-center mt-4'>
+        <form onSubmit={handleregister} className='w-96 mx-auto h-auto  shadow-2xl text-center mt-4'>
             <div className='mt-4'>
             <h1 className='text-2xl '>Your Name</h1>
             <input className='border border-gray-900 shadow-2xl' type="name" name="name" id="" placeholder='Your name' required/>

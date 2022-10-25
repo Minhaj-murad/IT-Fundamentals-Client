@@ -1,9 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Blog from "./Blog/Blog";
-import Courses from "./Courses/Courses";
-import FAQ from "./FAQ/FAQ";
-import Home from "./Home/Home";
-import Main from "./Main/Main";
+import Blog from "./Components/Blog/Blog";
+import Courses from "./Components/Courses/Courses";
+import FAQ from "./Components/FAQ/FAQ";
+import Home from "./Components/Home/Home";
+import Login from "./Components/Login/Login";
+import Main from "./Components/Main/Main";
+import Signup from "./Components/Signup/Signup";
 
 
 function App() {
@@ -31,7 +33,15 @@ function App() {
         {
           path: '/blog',
           element: <Blog></Blog>
-        }
+        },
+        {
+          path: '/login',
+          element: <Login></Login>
+        },
+        {
+          path: '/signup',
+          element: <Signup></Signup>
+        },
 
       ]
     }

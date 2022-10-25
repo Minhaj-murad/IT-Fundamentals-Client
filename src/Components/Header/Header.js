@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../UseContext/Usecontext';
 import './Header.css'
 
 const Header = () => {
+    const {user, logOut} =useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') || 'light'
@@ -85,23 +94,33 @@ const Header = () => {
                         </ul>
                     </div>
                     <ul class="flex items-center hidden space-x-8 lg:flex">
-                        <li>
-                            <Link to='/login'
-                                title="Sign in"
-                                class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                Sign in
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='./signup'
-                                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                    <>
+                            {
+                                user?
+                                
+                                    <>
+                                        <span className='text-white'>{user?.displayName}</span>
+                                        <button className='bg-gray-300 rounded-xl px-2' onClick={handleLogOut}>Log out</button>
+                                    </>
+                                    :
+                                    <>
+                                        <Link to='/login' className='text-white'>Login</Link>
+                                        <Link to='/signup' className='text-white'>Register</Link>
+                                    </>
+                            }
+                             <Link to="/profile" className='text-white'>
+                            {user?.photoURL ?
+                            <img className='roundedCircle' style={{ height: '30px' }} src={user?.photoURL} alt="" />
+                                    
+                                    
+                                    
+                                
+                                : <FaUser></FaUser>
+                            }
+                        </Link>
 
-                                title="Sign up"
-                            >
-                                Sign up
-                            </Link>
-                        </li>
+
+                        </>
                         <li>
                             <div className={`App ${theme}`}>
                                 <button className='bg-gray-400 px-2 rounded-xl' onClick={toggleTheme}>Dark/Light</button>

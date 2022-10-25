@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div >
-            <form className='w-96 mx-auto h-auto  shadow-2xl text-center mt-4'>
+        <div>
+            <form className=' w-96 mx-auto h-auto font-serif shadow-2xl text-center mt-4'>
                
                 <div className='mt-4'>
-                <h1 className='text-2xl '>Email</h1>
-                <input className='border border-gray-900 shadow-2xl' type="email" name="email" id="" placeholder='Your Email' required/>
+                <h1 className='text-2xl  '>Email</h1>
+                <input className='bg-gray-300 border border-gray-900 shadow-2xl' type="email" name="email" id="" placeholder='Your Email' required/>
                 </div>
                 <div className='mt-4'>
                 <h1 className='text-2xl '>Password</h1>

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Blog from "./Components/Blog/Blog";
 import Courses from "./Components/Courses/Courses";
 import FAQ from "./Components/FAQ/FAQ";
+
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Main from "./Components/Main/Main";
@@ -31,7 +32,7 @@ function App() {
           element: <FAQ></FAQ>
         },
         {
-          path: '/blog',
+          path: '/blogs',
           element: <Blog></Blog>
         },
         {
@@ -42,7 +43,7 @@ function App() {
           path: '/signup',
           element: <Signup></Signup>
         },
-
+        
       ]
     }
   ])

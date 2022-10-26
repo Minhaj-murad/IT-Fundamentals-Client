@@ -5,6 +5,7 @@ import { AuthContext } from '../UseContext/Usecontext';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 const Signup = () => {
+    
     const { createUser, googlesignin, githubsignin, updateUserProfile } = useContext(AuthContext);
     const googleprovider = new GoogleAuthProvider();
     const githubprovider = new GithubAuthProvider();

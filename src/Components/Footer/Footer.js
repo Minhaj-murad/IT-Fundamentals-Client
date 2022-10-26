@@ -1,18 +1,9 @@
 import React from 'react';
-
+import img from '../images/hlogo.png'
 const Footer = () => {
     return (
         <div className="relative mt-16 bg-gray-400">
-        <svg
-          className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-deep-purple-accent-400"
-          preserveAspectRatio="none"
-          viewBox="0 0 1440 54"
-        >
-          <path
-            fill="currentColor"
-            d="M0 22L120 16.7C240 11 480 1.00001 720 0.700012C960 1.00001 1200 11 1320 16.7L1440 22V54H1320C1200 54 960 54 720 54C480 54 240 54 120 54H0V22Z"
-          />
-        </svg>
+        
         <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
             <div className="md:max-w-md lg:col-span-2">
@@ -22,21 +13,7 @@ const Footer = () => {
                 title="Company"
                 className="inline-flex items-center"
               >
-                <svg
-                  className="w-8 text-teal-accent-400"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeMiterlimit="10"
-                  stroke="currentColor"
-                  fill="none"
-                >
-                  <rect x="3" y="1" width="7" height="12" />
-                  <rect x="3" y="17" width="7" height="6" />
-                  <rect x="14" y="1" width="7" height="6" />
-                  <rect x="14" y="11" width="7" height="12" />
-                </svg>
+                <img className='w-16' src={img} alt="" />
                 <span className="ml-2 text-xl font-bold tracking-wide text-gray-900 uppercase">
                   IT Fundamentals!
                 </span>

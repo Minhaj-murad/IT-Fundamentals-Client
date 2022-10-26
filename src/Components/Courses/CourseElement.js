@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-const CourseElement = () => {
+const Courseelement = () => {
     const course = useLoaderData();
     const { courseName,duration,image,description}=course;
     console.log(course);
@@ -20,4 +20,4 @@ const CourseElement = () => {
         );
     };
 
-export default CourseElement;
+export default Courseelement;

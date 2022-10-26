@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## All about this website:
+ 
+ 1. This project is designed for those who want to konw about some basic Computer programming related courses specially for IT students.
+
+ 2.In this project we learned about Route,Private or Protected Route as well as firebase Authentication.
+
+ 3. We have also learned about Usecontext and how to use data in one route from diffrent routes.
+
+ 4.In firebase authentication we have used simple email and password login/sign in, Google Sign in, Github Sign in .
+
+ 5. Without signingin we will not let any user to access our valuable course details as well as TO Frequently Asked Questions.
+ 
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:

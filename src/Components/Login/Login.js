@@ -1,17 +1,18 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../UseContext/Usecontext';
 
 const Login = () => {
+    const [error, setError] = useState('');
     const { signIn, googlesignin, githubsignin } = useContext(AuthContext);
     console.log(signIn);
     const googleprovider = new GoogleAuthProvider();
     const githubprovider = new GithubAuthProvider();
     const navigate = useNavigate();
-    const location = useLocation(); 
+    const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
     const handlesubmit = (e) => {
@@ -26,20 +27,26 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                navigate(from, {replace: true})
+                setError('');
+                navigate(from, { replace: true })
 
             })
-            .catch(error => console.error(error));
+            .catch(error => {
 
+            console.error(error)
+            setError(error.message);
+            
+            });
+             
     }
-  
+
 
     const handlegooglesign = () => {
         googlesignin(googleprovider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error));
     }
@@ -49,7 +56,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error));
     }
@@ -69,12 +76,18 @@ const Login = () => {
                 <button className='bg bg-amber-700 rounded-xl my-4 py-1 px-2 font-semibold ' type="submit">Log in </button>
                 <br />
                 <p>Don't have an account? Please <Link to='/signup' className='text-blue-800 font-semibold'>Sign Up  </Link> First</p>
-            </form>
-            <div className='w-56 flex gap-2 mx-auto'>
 
-                <button onClick={handlegooglesign} className='bg-cyan-600 py-1 px-2 rounded-lg text-center w-28 mx-auto flex items-center gap-4 border border-gray-700'><FaGoogle></FaGoogle> Google </button>
-                <button onClick={handlegithubsign} className='bg-cyan-600 py-1 px-2 rounded-lg text-center w-28 mx-auto flex items-center gap-4 border border-gray-700'><FaGithub></FaGithub> Github </button>
-            </div>
+               {
+                error &&  <p className='text-red-700 text-xl'>Error: {error}</p>
+               }
+                <div className='w-56 flex gap-2 mx-auto'>
+
+                    <button onClick={handlegooglesign} className='bg-cyan-600 py-1 px-2 rounded-lg text-center w-28 mx-auto flex items-center gap-4 border border-gray-700'><FaGoogle></FaGoogle> Google </button>
+                    <button onClick={handlegithubsign} className='bg-cyan-600 py-1 px-2 rounded-lg text-center w-28 mx-auto flex items-center gap-4 border border-gray-700'><FaGithub></FaGithub> Github </button>
+                </div>
+            </form>
+
+
         </div>
     );
 };

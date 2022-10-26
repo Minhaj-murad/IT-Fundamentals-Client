@@ -1,9 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Blog from "./Components/Blog/Blog";
+import Courseelement from "./Components/Courses/Courseelement";
 
-import CourseElement from "./Components/Courses/CourseElement";
+
 import Courses from "./Components/Courses/Courses";
 import Rightside from "./Components/Courses/Rightside/Rightside";
+import Error from "./Components/Error/Error";
 
 import FAQ from "./Components/FAQ/FAQ";
 
@@ -20,6 +22,7 @@ function App() {
     {
       path: '/',
       element: <Main></Main>,
+      errorElement:<Error></Error>,
       children: [
         {
           path: '/',
@@ -36,7 +39,7 @@ function App() {
         },
         { 
           path:'/courses/:id',
-          element:<PrivateRoute><CourseElement></CourseElement></PrivateRoute>,
+          element:<PrivateRoute><Courseelement></Courseelement></PrivateRoute>,
           loader : ({params})=> fetch(`https://assignment-10-server-ivory.vercel.app/courses/${params.id}`)
         },
         {

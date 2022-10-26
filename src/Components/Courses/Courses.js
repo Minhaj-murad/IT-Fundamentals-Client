@@ -17,7 +17,8 @@ const Courses = () => {
                 key={course.id}></Course>)
            }
           </div>
-          <div>
+          <div >
+            <h1 className='mt-4 text-gray-900 font-sans font-bold text-4xl'>Available Courses:</h1>
            <Rightside> </Rightside>
           </div>
         </div>

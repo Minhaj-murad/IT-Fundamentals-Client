@@ -5,39 +5,47 @@ import { useState } from 'react';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
-const Usecontext = ({children}) => {
+const Usecontext = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
 
 
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
 
     const signIn = (email, password) => {
-     return signInWithEmailAndPassword(auth, email, password);
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
     }
     const updateUserProfile = (profile) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, profile);
     }
 
     const googlesignin = (provider) => {
+        setLoading(true);
         return signInWithPopup(auth, provider)
     }
 
-    const githubsignin =(provider)=>{
+    const githubsignin = (provider) => {
+        setLoading(true);
         return signInWithPopup(auth, provider)
     }
 
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('inside auth state change', currentUser);
-                setUser(currentUser);
+            setLoading(false);
+            setUser(currentUser);
         });
 
         return () => {
@@ -46,11 +54,11 @@ const Usecontext = ({children}) => {
 
     }, [])
 
-    const authInfo = {user,createUser, signIn,googlesignin,githubsignin,logOut,updateUserProfile}
+    const authInfo = { user, createUser, signIn, googlesignin, githubsignin, logOut, updateUserProfile, loading }
     return (
         <div>
             <AuthContext.Provider value={authInfo}>
-                  {children}
+                {children}
             </AuthContext.Provider>
         </div>
     );

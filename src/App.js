@@ -7,6 +7,8 @@ import FAQ from "./Components/FAQ/FAQ";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Main from "./Components/Main/Main";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+
 import Signup from "./Components/Signup/Signup";
 
 
@@ -36,7 +38,7 @@ function App() {
         },
         {
           path: '/faq',
-          element: <FAQ></FAQ>
+          element: <PrivateRoute><FAQ></FAQ></PrivateRoute>
         },
         {
           path: '/blogs',

@@ -99,7 +99,7 @@ const Header = () => {
                             </>
                              <Link to="/profile" className='text-white'>
                             {user?.photoURL ?
-                            <img className='roundedCircle' style={{ height: '30px' }} src={user?.photoURL} alt="" />
+                            <img className='rounded-full' style={{ height: '30px' }} src={user?.photoURL} alt="" />
                                     
                                     
                                     

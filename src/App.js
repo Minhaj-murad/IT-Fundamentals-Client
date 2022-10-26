@@ -4,6 +4,7 @@ import Blog from "./Components/Blog/Blog";
 import CourseElement from "./Components/Courses/CourseElement";
 import Courses from "./Components/Courses/Courses";
 import Rightside from "./Components/Courses/Rightside/Rightside";
+
 import FAQ from "./Components/FAQ/FAQ";
 
 import Home from "./Components/Home/Home";
@@ -51,6 +52,7 @@ function App() {
           path: '/blogs',
           element: <Blog></Blog>
         },
+        
         {
           path: '/login',
           element: <Login></Login>

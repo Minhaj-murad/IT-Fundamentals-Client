@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
-import { FaUser } from 'react-icons/fa';
+import { FaDownload, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../UseContext/Usecontext';
 import './Header.css'
@@ -33,6 +33,25 @@ const Header = () => {
         localStorage.setItem('theme', theme);
         document.body.className = theme;
     }, [theme]);
+
+    // download handle
+    const downloadTxtFile = () => {
+        // text content
+        const texts = ["line 1", "line 2", "line 3"]
+
+        // file object
+        const file = new Blob(texts, { type: 'text/plain' });
+
+        // anchor link
+        const element = document.createElement("a");
+        element.href = URL.createObjectURL(file);
+        element.download = "100ideas-" + Date.now() + ".txt";
+
+        // simulate link click
+        document.body.appendChild(element); // Required for this to work in FireFox
+        element.click();
+    }
+
     return (
         <div className="bg-gray-900 sticky top-0 z-10 ">
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -84,6 +103,14 @@ const Header = () => {
                                     Blogs
                                 </Link>
                             </li>
+                            <li>
+                                            <Link  onClick={downloadTxtFile} 
+                                                title="Frequently Asked Quuestions "
+                                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                            >
+                                                <FaDownload></FaDownload>
+                                            </Link>
+                                        </li>
                         </ul>
                     </div>
                     <ul className="flex items-center hidden space-x-8 lg:flex">
@@ -206,6 +233,14 @@ const Header = () => {
                                                 className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                                             >
                                                 FAQ
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to='/download' 
+                                                title="Frequently Asked Quuestions "
+                                                className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
+                                            >
+                                                Download
                                             </Link>
                                         </li>
                                         <li>

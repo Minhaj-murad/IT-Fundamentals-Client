@@ -5,14 +5,14 @@ const Home = () => {
         <div className="relative">
         <img
           src={img}
-          className="absolute inset-0 object-cover w-full h-auto"
+          className="absolute inset-0 object-cover h-96 lg:w-full lg:h-auto"
           alt=""
         />
         <div className="relative ">
           <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
             <div className="flex flex-col items-center justify-between xl:flex-row">
-              <div className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
-                <h2 className="max-w-lg mb-6 mt-12 font-sans text-3xl font-bold tracking-tight text-amber-600 sm:text-4xl sm:leading-none">
+              <div className="w-full mb-0  h-56 lg:max-w-xl lg:mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
+                <h2 className="max-w-lg mb-0 -mt-12 lg:mb-6 lg:mt-12 font-sans text-3xl font-bold tracking-tight text-amber-600 sm:text-4xl sm:leading-none">
                   Fundamental Courses for <br className="hidden md:block" />
                  Information Technology  {' '}
                   <span className="text-teal-accent-400">Based Students</span>

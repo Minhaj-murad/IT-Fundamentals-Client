@@ -6,7 +6,7 @@ import { AuthContext } from '../UseContext/Usecontext';
 import './Header.css'
 import img from '../images/hlogo.png'
 const Header = () => {
-    const {user, logOut} =useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -16,19 +16,25 @@ const Header = () => {
     const [theme, setTheme] = useState(
         localStorage.getItem('theme') || 'light'
     );
+
+    const [change, setchange]=useState(false)
     const toggleTheme = () => {
         if (theme === 'light') {
             setTheme('dark');
+            setchange(true)
         } else {
             setTheme('light');
+            setchange(false)
         }
     };
+
+
     useEffect(() => {
         localStorage.setItem('theme', theme);
         document.body.className = theme;
     }, [theme]);
     return (
-        <div className="bg-gray-900">
+        <div className="bg-gray-900 sticky top-0 z-10 ">
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     <div className="flex items-center">
@@ -39,7 +45,7 @@ const Header = () => {
                             className="inline-flex items-center mr-8"
                         >
                             <img className='w-8' src={img} alt="" />
-                           
+
                             <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
                                 IT Fundamentals!
                             </span>
@@ -81,10 +87,10 @@ const Header = () => {
                         </ul>
                     </div>
                     <ul className="flex items-center hidden space-x-8 lg:flex">
-                    <>
+                        <>
                             {
                                 user?.uid ?
-                                
+
                                     <>
                                         <span className='text-white'>{user?.displayName}</span>
                                         <button className='bg-gray-300 rounded-xl px-2 text-gray' onClick={handleLogOut}>Log out</button>
@@ -96,23 +102,27 @@ const Header = () => {
                                     </>
                             }
 
-                            </>
-                             <Link to="/profile" className='text-white'>
+                        </>
+                        <Link to="/profile" className='text-white'>
                             {user?.photoURL ?
-                            <img className='rounded-full' style={{ height: '30px' }} src={user?.photoURL} alt="" />
-                                    
-                                    
-                                    
-                                
+                                <img className='rounded-full' style={{ height: '30px' }} src={user?.photoURL} alt="" />
+
+
+
+
                                 : <FaUser></FaUser>
                             }
                         </Link>
 
 
-                       
+
                         <li>
                             <div className={`App ${theme}`}>
-                                <button className='bg-gray-400 px-2 rounded-xl' onClick={toggleTheme}>Dark/Light</button>
+                                <button className='bg-gray-400 px-2 rounded-xl' onClick={toggleTheme}>
+                                {
+                                                change ? <p>Light</p> : <p>Dark</p>
+                                             }
+                                </button>
                             </div>
                         </li>
                     </ul>
@@ -139,7 +149,7 @@ const Header = () => {
                             </svg>
                         </button>
                         {isMenuOpen && (
-                            <div className="absolute top-0 left-0 w-full">
+                            <div className="absolute top-0 left-0 w-full h-auto">
                                 <div className="p-5 bg-white border rounded shadow-sm">
                                     <div className="flex items-center justify-between mb-4">
                                         <div>
@@ -149,23 +159,9 @@ const Header = () => {
                                                 title="Company"
                                                 className="inline-flex items-center"
                                             >
-                                                <svg
-                                                    className="w-8 text-deep-purple-accent-400"
-                                                    viewBox="0 0 24 24"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    strokeLinecap="round"
-                                                    strokeMiterlimit="10"
-                                                    stroke="currentColor"
-                                                    fill="none"
-                                                >
-                                                    <rect x="3" y="1" width="7" height="12" />
-                                                    <rect x="3" y="17" width="7" height="6" />
-                                                    <rect x="14" y="1" width="7" height="6" />
-                                                    <rect x="14" y="11" width="7" height="12" />
-                                                </svg>
+                                                <img className='w-8' src={img} alt="" />
                                                 <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                                                    Company
+                                                    IT Fundamentals!
                                                 </span>
                                             </a>
                                         </div>
@@ -185,77 +181,96 @@ const Header = () => {
                                             </button>
                                         </div>
                                     </div>
-                                    <nav>
-                                        <ul className="space-y-4">
-                                            <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Our product"
-                                                    title="Our product"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    Product
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Our product"
-                                                    title="Our product"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    Features
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Product pricing"
-                                                    title="Product pricing"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    Pricing
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="About us"
-                                                    title="About us"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    About us
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Sign in"
-                                                    title="Sign in"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    Sign in
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="/"
-                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                    aria-label="Sign up"
-                                                    title="Sign up"
-                                                >
-                                                    Sign up
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
+
+                                    <ul className="space-y-2">
+                                        <li>
+                                            <Link to='/'
+
+                                                title="Home page"
+                                                className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
+                                            >
+                                                Home
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to='/courses'
+                                                title="Our Courses"
+                                                className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
+                                            >
+                                                Courses
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to='./faq'
+                                                title="Frequently Asked Quuestions "
+                                                className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
+                                            >
+                                                FAQ
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to='/blogs'
+                                                title="Our new Blogs"
+                                                className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
+                                            >
+                                                Blogs
+                                            </Link>
+                                        </li>
+                                        <div className='flex flex-col space-y-2'>
+                                        {
+                                            user?.uid ?
+
+                                                <>
+                                                    <span className='text-gray-900'>{user?.displayName}</span>
+                                                    <button className='text-gray-900 font-semibold' onClick={handleLogOut}>Log out</button>
+                                                </>
+                                                :
+                                                <div className='flex flex-col space-y-2'>
+                                                    <div>
+                                                    <Link to='/login' className='text-gray-900 font-semibold'>Login</Link> 
+                                                    </div>
+                                                   <div>
+                                                   <Link to='/signup' className='text-gray-900 font-semibold'>Register</Link>
+                                                   </div>
+                                                </div>
+                                        }
+
+                                    </div>
+                                    <Link to="/profile" className='text-gray-900'>
+                                        {user?.photoURL ?
+                                            <img className='rounded-full' style={{ height: '30px' }} src={user?.photoURL} alt="" />
+
+
+
+
+                                            : <FaUser></FaUser>
+                                        }
+                                    </Link>
+
+
+
+                                    <li>
+                                        <div className={`App ${theme}`}>
+                                            <button  onClick={toggleTheme}>
+                                             {
+                                                change ? <p className='bg-amber-600 text-white' >Light</p> : <p className='bg-amber-600 text-gray-900 px-2 rounded-xl font-bold'>Dark</p>
+                                             }
+
+                                            </button>
+                                        </div>
+                                    </li>
+                               
+                                    </ul>
                                 </div>
-                            </div>
-                        )}
-                    </div>
+                                 
+                                   
+                            
                 </div>
+                        )}
             </div>
         </div>
+            </div >
+        </div >
     );
 };
 

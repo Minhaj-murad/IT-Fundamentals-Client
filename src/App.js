@@ -35,7 +35,7 @@ function App() {
         },
         { 
           path:'/courses/:id',
-          element:<CourseElement></CourseElement>,
+          element:<PrivateRoute><CourseElement></CourseElement></PrivateRoute>,
           loader : ({params})=> fetch(`https://assignment-10-server-ivory.vercel.app/courses/${params.id}`)
         },
         {

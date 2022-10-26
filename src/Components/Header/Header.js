@@ -37,19 +37,17 @@ const Header = () => {
     // download handle
     const downloadTxtFile = () => {
         // text content
-        const texts = ["line 1", "line 2", "line 3"]
-
-        // file object
-        const file = new Blob(texts, { type: 'text/plain' });
-
-        // anchor link
-        const element = document.createElement("a");
-        element.href = URL.createObjectURL(file);
-        element.download = "100ideas-" + Date.now() + ".txt";
-
-        // simulate link click
-        document.body.appendChild(element); // Required for this to work in FireFox
-        element.click();
+        fetch('SamplePDF.pdf').then(response => {
+            response.blob().then(blob => {
+                // Creating new object of PDF file
+                const fileURL = window.URL.createObjectURL(blob);
+                // Setting various property values
+                let alink = document.createElement('a');
+                alink.href = fileURL;
+                alink.download = 'SamplePDF.pdf';
+                alink.click();
+            })
+        });
     }
 
     return (

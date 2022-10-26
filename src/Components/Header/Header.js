@@ -83,7 +83,7 @@ const Header = () => {
                     <ul className="flex items-center hidden space-x-8 lg:flex">
                     <>
                             {
-                                user?
+                                user?.uid ?
                                 
                                     <>
                                         <span className='text-white'>{user?.displayName}</span>
@@ -95,6 +95,8 @@ const Header = () => {
                                         <Link to='/signup' className='text-white font-semibold'>Register</Link>
                                     </>
                             }
+
+                            </>
                              <Link to="/profile" className='text-white'>
                             {user?.photoURL ?
                             <img className='roundedCircle' style={{ height: '30px' }} src={user?.photoURL} alt="" />
@@ -107,7 +109,7 @@ const Header = () => {
                         </Link>
 
 
-                        </>
+                       
                         <li>
                             <div className={`App ${theme}`}>
                                 <button className='bg-gray-400 px-2 rounded-xl' onClick={toggleTheme}>Dark/Light</button>

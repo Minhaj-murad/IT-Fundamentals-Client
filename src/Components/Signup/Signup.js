@@ -5,7 +5,7 @@ import { AuthContext } from '../UseContext/Usecontext';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 const Signup = () => {
-    const { createUser, googlesignin,githubsignin } = useContext(AuthContext);
+    const { createUser, googlesignin, githubsignin, updateUserProfile } = useContext(AuthContext);
     const googleprovider = new GoogleAuthProvider();
     const githubprovider = new GithubAuthProvider();
 
@@ -25,11 +25,21 @@ const Signup = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-
+                handleUpdateUserProfile(name, photoURL);
 
             })
             .catch(error => console.error(error));
 
+    }
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
     }
     const handlegooglesign = () => {
         googlesignin(googleprovider)
@@ -41,14 +51,14 @@ const Signup = () => {
             .catch(error => console.error(error));
     }
 
-    const handlegithubsign =()=> {
+    const handlegithubsign = () => {
         githubsignin(githubprovider)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
+            .then(result => {
+                const user = result.user;
+                console.log(user);
 
-        })
-        .catch(error => console.error(error));
+            })
+            .catch(error => console.error(error));
     }
 
 

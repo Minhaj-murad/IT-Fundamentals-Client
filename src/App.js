@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Blog from "./Components/Blog/Blog";
+
+import CourseElement from "./Components/Courses/CourseElement";
 import Courses from "./Components/Courses/Courses";
 import Rightside from "./Components/Courses/Rightside/Rightside";
 import FAQ from "./Components/FAQ/FAQ";
@@ -29,12 +31,17 @@ function App() {
         {
           path: '/courses',
           element: <Courses></Courses>,
-          loader : ()=> fetch('https://assignment-10-server-ivory.vercel.app/courses')
+          loader:()=> fetch('https://assignment-10-server-ivory.vercel.app/courses')
+        },
+        { 
+          path:'/courses/:id',
+          element:<CourseElement></CourseElement>,
+          loader : ({params})=> fetch(`https://assignment-10-server-ivory.vercel.app/courses/${params.id}`)
         },
         {
           path: '/courses',
           element: <Rightside></Rightside>,
-          loader: ()=> fetch('https://assignment-10-server-ivory.vercel.app/courses')
+         
         },
         {
           path: '/faq',

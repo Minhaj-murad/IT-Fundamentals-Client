@@ -6,10 +6,11 @@ import Rightside from './Rightside/Rightside';
 
 const Courses = () => {
     const courses=useLoaderData();
+    console.log(courses);
     return (
         <div className='courses'>
           <div className='grid grid-cols-2 gap-6'>
-         
+
            {
             courses.map(course => <Course 
                 course={course}

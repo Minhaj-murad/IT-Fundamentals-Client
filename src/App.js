@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Blog from "./Components/Blog/Blog";
-import Courseelement from "./Components/Courses/Courseelement";
+ import CheckOut from "./Components/Checkout/Checkout";
+
+ import Courseelement from "./Components/Courses/Courseelement";
 
 
 import Courses from "./Components/Courses/Courses";
@@ -13,8 +15,10 @@ import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Main from "./Components/Main/Main";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Shipping from "./Components/Shipping/Shipping";
 
 import Signup from "./Components/Signup/Signup";
+
 
 
 function App() {
@@ -22,12 +26,15 @@ function App() {
     {
       path: '/',
       element: <Main></Main>,
+      // loader:Getcourses,
       errorElement:<Error></Error>,
       children: [
         {
           path: '/',
           element: <Home></Home>
-        },
+        }
+        ,
+      
         {
           path: '/home',
           element: <Home></Home>
@@ -39,7 +46,7 @@ function App() {
         },
         { 
           path:'/courses/:id',
-          element:<PrivateRoute><Courseelement></Courseelement></PrivateRoute>,
+          element:<Courseelement></Courseelement>,
           loader : ({params})=> fetch(`https://assignment-10-server-ivory.vercel.app/courses/${params.id}`)
         },
         {
@@ -47,15 +54,23 @@ function App() {
           element: <Rightside></Rightside>,
          
         },
+         {
+          path:'/courses/checkout/:id',
+           element:<PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+           loader : ({params})=> fetch(`https://assignment-10-server-ivory.vercel.app/courses/${params.id}`)
+        },
         {
           path: '/faq',
-          element: <PrivateRoute><FAQ></FAQ></PrivateRoute>
+          element: <FAQ></FAQ>
         },
         {
           path: '/blogs',
           element: <Blog></Blog>
         },
-        
+        {
+          path:'/shipping',
+          element:<PrivateRoute><Shipping></Shipping></PrivateRoute>
+        },
         {
           path: '/login',
           element: <Login></Login>

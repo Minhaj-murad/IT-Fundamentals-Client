@@ -3,9 +3,13 @@ import app from '../../firebase.init';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { useState } from 'react';
 
+
 export const AuthContext = createContext();
+
 const auth = getAuth(app);
 const Usecontext = ({ children }) => {
+   
+    
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -53,12 +57,15 @@ const Usecontext = ({ children }) => {
         }
 
     }, [])
+   
 
     const authInfo = { user, createUser, signIn, googlesignin, githubsignin, logOut, updateUserProfile, loading }
     return (
         <div>
             <AuthContext.Provider value={authInfo}>
-                {children}
+               
+               {children}
+             
             </AuthContext.Provider>
         </div>
     );

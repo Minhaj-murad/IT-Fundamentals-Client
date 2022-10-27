@@ -51,7 +51,7 @@ const Header = () => {
     }
 
     return (
-        <div className="bg-gray-900 sticky top-0 z-10 ">
+        <div className="bg-gray-300 sticky top-0 z-10 text-gray-900 ">
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between">
                     <div className="flex items-center">
@@ -63,7 +63,7 @@ const Header = () => {
                         >
                             <img className='w-8' src={img} alt="" />
 
-                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
+                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-900 uppercase">
                                 IT Fundamentals!
                             </span>
                         </a>
@@ -72,7 +72,7 @@ const Header = () => {
                                 <Link to='/'
 
                                     title="Home page"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                                 >
                                     Home
                                 </Link>
@@ -80,7 +80,7 @@ const Header = () => {
                             <li>
                                 <Link to='/courses'
                                     title="Our Courses"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                                 >
                                     Courses
                                 </Link>
@@ -88,7 +88,7 @@ const Header = () => {
                             <li>
                                 <Link to='./faq'
                                     title="Frequently Asked Quuestions "
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                                 >
                                     FAQ
                                 </Link>
@@ -96,7 +96,7 @@ const Header = () => {
                             <li>
                                 <Link to='/blogs'
                                     title="Our new Blogs"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                                 >
                                     Blogs
                                 </Link>
@@ -104,7 +104,7 @@ const Header = () => {
                             <li>
                                             <Link  onClick={downloadTxtFile} 
                                                 title="Frequently Asked Quuestions "
-                                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                                className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                                             >
                                                 <FaDownload></FaDownload>
                                             </Link>
@@ -117,18 +117,18 @@ const Header = () => {
                                 user?.uid ?
 
                                     <>
-                                        <span className='text-white'>{user?.displayName}</span>
-                                        <button className='bg-gray-300 rounded-xl px-2 text-gray' onClick={handleLogOut}>Log out</button>
+                                        <span className='text-gray-900 font-semibold'>{user?.displayName}</span>
+                                        <button className='bg-gray-300 rounded-xl px-2  font-semibold' onClick={handleLogOut}>Log out</button>
                                     </>
                                     :
                                     <>
-                                        <Link to='/login' className='text-white font-semibold'>Login</Link>
-                                        <Link to='/signup' className='text-white font-semibold'>Register</Link>
+                                        <Link to='/login' className='text-gray-900 font-semibold'>Login</Link>
+                                        <Link to='/signup' className='text-gray-900 font-semibold'>Register</Link>
                                     </>
                             }
 
                         </>
-                        <Link to="/profile" className='text-white'>
+                        <Link to="/profile" className='text-gray-900'>
                             {user?.photoURL ?
                                 <img className='rounded-full' style={{ height: '30px' }} src={user?.photoURL} alt="" />
 
@@ -143,7 +143,7 @@ const Header = () => {
 
                         <li>
                             <div className={`App ${theme}`}>
-                                <button className='bg-gray-400 px-2 rounded-xl' onClick={toggleTheme}>
+                                <button className='bg-gray-400 px-2 rounded-xl font-semibold' onClick={toggleTheme}>
                                 {
                                                 change ? <p>Light</p> : <p>Dark</p>
                                              }
@@ -234,11 +234,11 @@ const Header = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to='/download' 
+                                            <Link  onClick={downloadTxtFile} 
                                                 title="Frequently Asked Quuestions "
                                                 className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-accent-400"
                                             >
-                                                Download
+                                                <FaDownload></FaDownload>
                                             </Link>
                                         </li>
                                         <li>

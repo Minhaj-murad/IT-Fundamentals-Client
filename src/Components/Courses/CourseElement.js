@@ -1,9 +1,9 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Courseelement = () => {
     const course = useLoaderData();
-    const { courseName,duration,image,description}=course;
+    const {id, courseName,duration,image,description}=course;
     console.log(course);
     return (
       
@@ -15,6 +15,7 @@ const Courseelement = () => {
           <div className="card-actions justify-end">
               <h1 className="card-title text-xl text-center font-serif font-semibold" >CourseTime:{duration}</h1> 
           </div>
+          <button className='bg-amber-600 py-1 px-2 rounded-lg text-center w-auto font-semibold mx-auto flex items-center gap-4 border border-gray-700' ><Link to={`/courses/checkout/${id}`}>Get Premium Access </Link></button>
         </div>
       </div>
         );

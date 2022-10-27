@@ -2,6 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Github code link  of Server:
+      https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-Minhaj-murad
+
+## Github code link  of Client:  
+
+      https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-Minhaj-murad
+
+## Live Website Link:
+    
+      https://assignment-10-affc3.web.app
+
 ## All about this website:
  
  1. This project is designed for those who want to konw about some basic Computer programming related courses specially for IT students.
